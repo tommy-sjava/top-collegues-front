@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {Collegue, Avis} from '../models'
+import { Collegue, Avis } from '../models'
 
 @Component({
   selector: 'app-collegue',
@@ -16,13 +16,13 @@ export class CollegueComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    
   }
 
   onVoted(avis: Avis) {
     if (avis == Avis.AIMER) {
       this.collegue.score++;
-    }else if(avis == Avis.DéTESTER){
+    } else if (avis == Avis.DéTESTER) {
       this.collegue.score--;
     }
   }

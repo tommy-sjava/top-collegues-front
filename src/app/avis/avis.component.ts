@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, OnChanges } from '@angular/core';
 import { Avis } from '../models';
 
 @Component({
@@ -6,21 +6,50 @@ import { Avis } from '../models';
   templateUrl: './avis.component.html',
   styleUrls: ['./avis.component.css']
 })
-export class AvisComponent implements OnInit {
+export class AvisComponent implements OnInit, OnChanges {
 
-  @Output() avis:EventEmitter<Avis> = new EventEmitter<Avis>();
+  @Output() avis: EventEmitter<Avis> = new EventEmitter<Avis>();
+  @Input() score: number;
+  btnLike: any;
+  btnUnlike: any;
 
-  constructor() { }
+  constructor() {
 
-  ngOnInit() {
   }
 
-  like(){
+  ngOnChanges() {
+    if (this.btnLike === undefined) {
+      return;
+    }
+    this.disableButtons();
+  }
+
+  ngOnInit() {
+    this.btnLike = <HTMLInputElement>document.getElementById("like");
+    this.btnUnlike = <HTMLInputElement>document.getElementById("unlike");
+  }
+
+  like() {
     this.avis.emit(Avis.AIMER);
   }
 
-  unlike(){
+  unlike() {
     this.avis.emit(Avis.DéTESTER);
+  }
+
+  disableButtons() {
+    console.log(this.score);
+
+    if (this.score >= 10) {
+      this.btnLike.disabled = true;
+    } else {
+      this.btnLike.disabled = false;
+    }
+    if (this.score <= -10) {
+      this.btnUnlike.disabled = true;
+    } else {
+      this.btnUnlike.disabled = false;
+    }
   }
 
 }

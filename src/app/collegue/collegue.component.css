@@ -1,0 +1,10 @@
+:host #photo{
+    width: 16rem;
+}
+
+:host .bloc{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 3rem;
+}
