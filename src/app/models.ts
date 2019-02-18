@@ -1,10 +1,10 @@
 export interface Collegue {
-    pseudo: string
-    score: number
-    photoURL: string
+  pseudo: string;
+  score: number;
+  photoURL: string;
 }
 
 export enum Avis {
-    AIMER,
-    DéTESTER
+  AIMER,
+  DETESTER
 }

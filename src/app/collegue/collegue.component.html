@@ -1,8 +1,8 @@
 <div class="bloc">
   <p>
-    <img id="photo" src={{collegue.photoURL}}>
+    <img id="photo" [src]="collegue.photoURL">
   </p>
   <div>{{collegue.pseudo}}</div>
   <div>{{collegue.score}}</div>
-  <app-avis (avis)="onVoted($event)" [score]=collegue.score></app-avis>
+  <app-avis (avis)="onVoted($event)" [btnLikeActif]="likeActif" [btnUnLikeActif]="unLikeActif"></app-avis>
 </div>
